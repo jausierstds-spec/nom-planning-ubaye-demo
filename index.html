@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#163e35">
+  <meta name="description" content="Démonstration statique Planning Ubaye V0.2. Uniquement des exemples inventés, stockés dans votre navigateur.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-PN3CsQoyH+8t05fw67g7794HXu3cu7AAO/erXHPMulM='; style-src 'sha256-zZSFRCqnh5VR+7YKHjGCpIg3uTKSKMfKWq7CjRZuSLw='; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Planning Ubaye · Démonstration statique V0.2</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCI+PHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiByeD0iMjIiIGZpbGw9IiMxNjNlMzUiLz48cGF0aCBkPSJNMTMgNTQgMzIgMjNsMTMgMjAgOC0xMiAxNiAyM0gxM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0ibTI2IDMzIDYgNSA2LTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+Cg==" type="image/svg+xml">
+  <style>:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#233d35;background:#f5f6f2;font-synthesis:none;--green:#174f40;--muted:#7b857e;--line:#e5e8df;--purple:#786391}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer;transition:background .15s,transform .15s}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible{outline:3px solid #a2ba72;outline-offset:3px}input:focus,select:focus,textarea:focus{outline:2px solid #7f9b7b;outline-offset:1px}button{min-height:44px}a{color:inherit;text-decoration:none}h1,h2,p{margin:0}h1{font-size:30px;letter-spacing:-1.1px;font-weight:600;line-height:1.2}h2{font-size:17px;font-weight:600;letter-spacing:-.3px}small{font-size:12px}.muted{color:var(--muted);line-height:1.7;font-size:14px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:1.6px;margin-bottom:12px}.primary,.secondary{border:0;border-radius:7px;padding:12px 18px;display:inline-flex;gap:16px;align-items:center;justify-content:center;font-size:13px;font-weight:600;white-space:nowrap}.primary{background:var(--green);color:white}.primary:hover:not(:disabled){background:#24654f}.secondary{border:1px solid #d8ded2;color:#354f41;background:white}.secondary:hover:not(:disabled){background:#f0f3eb}.badge{display:inline-block;background:#eff4e8;color:#62804c;padding:7px 10px;border-radius:5px;font-size:10px;font-weight:600;white-space:nowrap}.badge.locked{background:#eeeaf5;color:#786391}.demo-pill{font-size:10px;letter-spacing:.3px;color:#927541;background:#f7f0dc;padding:7px 11px;border-radius:20px;white-space:nowrap}.separator{color:#bdc5bb;margin:0 9px}.brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700;letter-spacing:-.9px}.brand img{width:36px;height:36px}.brand-light{font-weight:400;color:#a6b896;margin-left:3px}.app-shell{display:flex;min-height:100vh}.sidebar{width:232px;background:#183d33;color:#edf3e7;position:fixed;inset:0 auto 0 0;padding:31px 19px 0;display:flex;flex-direction:column;z-index:5}.workspace-label{font-size:8px;letter-spacing:1.4px;color:#8ca69b;margin:50px 10px 15px}.sidebar nav{display:flex;flex-direction:column;gap:7px}.nav-item{border:0;background:transparent;color:#b1c2b5;display:flex;gap:13px;align-items:center;border-radius:6px;padding:13px 12px;text-align:left;font-size:12px;min-height:45px}.nav-item>span{font-size:19px;width:20px;text-align:center}.nav-item.active{color:#e6efc4;background:#315446}.nav-item:hover{background:#294c40}.sidebar-bottom{margin-top:auto;padding-top:50px}.period-card{background:#24483c;border:1px solid #365647;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:7px;font-size:12px;color:#b8c6b2}.period-card>span:first-child{font-size:8px;letter-spacing:1.3px;color:#9fb28c}.period-card strong{font-size:15px;color:#e4edcf;font-weight:500}.period-card small{font-size:10px;border-top:1px solid #3a5745;margin-top:6px;padding-top:12px;color:#a7bc96}.sidebar-user{display:flex;align-items:center;gap:9px;padding:25px 0}.avatar{width:35px;height:35px;flex-shrink:0;border-radius:50%;background:#e2eacb;color:#466441;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}.sidebar-user strong{font-size:11px;font-weight:500;display:block}.sidebar-user small{display:block;color:#91a79c;font-size:9px;margin-top:5px}.logout{margin-left:auto;background:none;border:0;color:#b2c2b0;font-size:22px;width:35px}.main-shell{margin-left:232px;width:calc(100% - 232px)}.topbar{height:73px;border-bottom:1px solid var(--line);background:#fbfcf9;display:flex;align-items:center;justify-content:space-between;padding:0 38px;color:#7b847a;font-size:11px}.top-divider{padding:0 11px;color:#bac2b5}#main-content{max-width:1510px;padding:34px 38px 0;margin:auto;outline:none}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.page-heading .eyebrow{color:#84906e}.page-heading .muted{margin-top:10px;font-size:12px}.toolbar{display:flex;justify-content:space-between;align-items:center;padding-bottom:23px;border-bottom:1px solid var(--line);gap:15px}.segmented{display:flex;gap:5px;padding:4px;border:1px solid #dce2d5;border-radius:8px;background:#eef1e9}.segmented button{display:flex;gap:9px;align-items:center;border:0;border-radius:5px;padding:7px 12px;font-size:12px;background:transparent;color:#76836e;min-height:36px}.segmented .selected{background:#fff;box-shadow:0 1px 3px #1d3e3512;color:#294d3b}.segmented small{font-size:10px;color:#87927d}.small-avatar{display:inline-flex;width:23px;height:23px;border-radius:50%;background:#e4ebd8;align-items:center;justify-content:center;font-size:10px}.month-picker{display:flex;align-items:center;gap:6px}.month-picker button{border:1px solid var(--line);border-radius:5px;background:#fff;width:32px;min-height:34px;font-size:21px;color:#5d705a}.month-picker input{border:0;padding:7px;background:transparent;color:#354a36;font-size:12px;width:151px}.context-line{font-size:11px;color:#869079;display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:12px}.status-dot{display:inline-block;width:6px;height:6px;background:#7fa060;border-radius:50%;margin-right:6px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;margin-bottom:24px}.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:21px 20px;min-height:139px}.stat>p{font-size:11px;color:#818d7a;margin-bottom:17px}.stat>strong{display:block;font-weight:500;font-size:30px;letter-spacing:-1.3px;color:#344e38;margin-bottom:13px}.stat>span{font-size:10px;color:#91998b;line-height:1.6;display:block}.stat.green{background:#e9efdf;border-color:#dde6d0}.stat.purple{background:#f0edf5;border-color:#e6dfed}.stat.purple strong{color:#75608c}.stat.sand{background:#f4f0e5;border-color:#ebe4d4}.stat.sand strong{color:#8b7850}.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px}.dashboard-grid.lower{margin-top:23px}.panel{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:23px 22px 18px}.panel-heading p{color:#949c8e;font-size:10px;margin-top:7px;line-height:1.6}.panel-heading .eyebrow{margin-top:0;margin-bottom:10px}.panel-heading h2{font-size:16px}.panel-footnote{margin:14px 22px 20px;color:#929c8a;font-size:10px;line-height:1.7}.chart-legend{display:flex;gap:14px;justify-content:flex-end;padding:0 24px;color:#9ba28e;font-size:9px}.chart-legend span:first-child{color:#5d7e57}.week-chart{height:190px;display:flex;gap:20px;padding:20px 24px 10px;border-bottom:1px solid #f0f1eb;background:repeating-linear-gradient(to top,transparent 0,transparent 39px,#f5f6f0 40px,#f5f6f0 41px)}.chart-column{flex:1;min-width:0;display:flex;flex-direction:column;text-align:center;align-items:center}.chart-column>span{font-size:10px;color:#6f8265}.bar-track{height:112px;width:100%;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}.bar-track progress{appearance:none;transform:rotate(-90deg);width:110px;height:30px;position:absolute;bottom:40px;background:transparent;border:0}.bar-track progress::-webkit-progress-bar{background:#edf1e7;border-radius:4px}.bar-track progress::-webkit-progress-value{background:#75946a;border-radius:4px}.bar-track progress::-moz-progress-bar{background:#75946a}.chart-column strong{font-size:10px;margin-top:10px;font-weight:500}.chart-column small{font-size:9px;color:#9ba38e;margin-top:4px}.recovery-panel{background:#edf2e5;border-color:#dfe7d3}.recovery-panel .panel-heading{padding-bottom:16px}.leaf{width:38px;height:38px;background:#dce6cc;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:23px;color:#64804c}.big-balance{font-weight:500;font-size:43px;letter-spacing:-1.5px;display:block;margin:0 23px}.recovery-panel>.big-balance+p{font-size:11px;color:#879479;margin:7px 23px 24px}.recovery-row{margin:0 23px;padding:12px 0;border-top:1px solid #dce4d2;display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#839375}.recovery-row strong{font-size:11px;color:#4f6843;font-weight:500}.recovery-note{margin:10px 23px 23px;font-size:10px;line-height:1.7;color:#839375}.text-button{border:0;background:none;color:#66825a;font-size:10px;white-space:nowrap}.table-wrap{overflow:auto;max-width:100%;-webkit-overflow-scrolling:touch}table{border-collapse:collapse;width:100%;text-align:left;font-size:11px;white-space:nowrap}thead{background:#f7f8f3;color:#929c86;font-size:9px;font-weight:500}th,td{padding:13px 18px;border-bottom:1px solid #eff1ea}th{font-weight:500}tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}.date-label{font-size:11px;color:#66765e}.number{color:#405c37;font-weight:600}.activity{display:inline-block;padding:5px 8px;background:#edf2e6;color:#7c9267;border-radius:4px;font-size:9px}.activity.conge{background:#f6efdc;color:#a28d50}.activity.recuperation{background:#e8ede2;color:#82906e}.activity.formation{background:#eeebf5;color:#8b79a1}.activity.repos{background:#f4f5f1;color:#b0b7a7}.activity.missing{background:#faf0e8;color:#b48d6c}.edit-button{width:32px;min-height:32px;border:0;background:transparent;color:#8f9b83;font-size:17px}.weekend{background:#fdfdfb}.sunday-label,.entry-note{display:block;font-size:9px;color:#b0a1c3;margin-top:5px;max-width:190px;white-space:normal;line-height:1.4}.entry-note{color:#99a18e}.bonus-value{color:#9680ab}.reminder{display:flex;align-items:flex-start;gap:13px;margin:0 22px;padding:14px 0;border-top:1px solid #eff1e9}.reminder:first-of-type{border-top:0}.reminder-icon{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:30px;height:30px;border-radius:7px;background:#eff3e6;color:#8c9d74;font-size:15px}.reminder-icon.purple{background:#f0ecf7;color:#a18cb6}.reminder-icon.sand{background:#f8f2e4;color:#b4a575}.reminder strong{font-size:11px;font-weight:500}.reminder p{font-size:10px;color:#9aa48f;line-height:1.7;margin-top:5px}.main-footer{display:flex;justify-content:space-between;color:#a1a995;font-size:9px;padding:30px 0 24px}.inline-note{display:flex;align-items:center;gap:14px;border:1px solid #dfe5d7;background:#eef3e7;border-radius:7px;padding:15px 18px;margin-bottom:22px;color:#7b8b6d;font-size:11px;line-height:1.7}.inline-note>span{font-size:21px}.balance-list{padding:0 22px}.balance-list>div{display:flex;gap:20px;justify-content:space-between;border-top:1px solid #eef0e8;padding:15px 0;color:#7f8b75;font-size:12px}.balance-list strong{font-weight:500;color:#536b43;white-space:nowrap}.balance-list .total{font-weight:600;color:#3e6135}.panel-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:18px 22px 23px}.panel-actions small{font-size:10px;color:#9aa38d}.validation-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}.person-heading{display:flex;align-items:center;gap:13px}.validation-status{padding:22px;color:#7b8c6e;font-size:12px}.validation-status strong{font-size:11px;font-weight:500}.validation-status p{margin-top:9px;font-size:10px;line-height:1.7;color:#9aa48c}.rules{max-width:850px;padding:28px 30px}.rules>p{margin-top:13px;font-size:13px;line-height:1.8;color:#8b947f}.rules dl{margin-bottom:0}.rules dt{font-size:14px;font-weight:600;margin-top:27px}.rules dd{margin:10px 0 0;color:#859078;font-size:13px;line-height:1.9}.login-layout{display:grid;grid-template-columns:1fr 1fr;min-height:100svh}.login-story{background:#183d33;color:#e4edcf;padding:45px 60px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.login-story>div{margin-top:90px}.login-story .eyebrow{font-size:9px;color:#9daf93;letter-spacing:1.1px}.login-story h1{font-size:64px;letter-spacing:-2.7px;line-height:1.1;margin:25px 0}.login-story>div>p:not(.eyebrow){color:#acbfa7;line-height:1.9;font-size:14px}.mountains{width:100%;margin-top:50px;fill:none;stroke:#527351;stroke-width:1.2}.story-footer{display:flex;justify-content:space-between;gap:12px;color:#91a88b;font-size:10px;margin-top:25px}.login-panel{max-width:540px;align-self:center;justify-self:center;padding:55px 50px;width:100%}.login-panel h2{font-size:28px;line-height:1.25;letter-spacing:-.8px;margin:30px 0 12px}.login-panel .muted{font-size:13px}.login-panel form{margin-top:30px}label{display:block;color:#74846a;font-size:12px;font-weight:500}label input,label select,label textarea{display:block;width:100%;border:1px solid #dce2d4;background:#fff;border-radius:6px;padding:12px;margin:9px 0 21px;min-height:45px;color:#354f3d;font-size:14px}textarea{resize:vertical}.login-panel .primary{width:100%;justify-content:space-between;margin-top:3px}.hint{border:1px solid #e0e6d7;border-radius:7px;background:#eff3e8;padding:17px;margin-top:24px;color:#859875;font-size:11px;line-height:1.8}.hint strong{font-weight:500;color:#617d52}.hint p{margin-top:6px}.hint code{font-size:11px}.login-bottom{font-size:9px;color:#a3ad97;margin-top:25px;line-height:1.8}#login-error,#form-error{color:#ae654e;font-size:12px;line-height:1.7;margin-top:12px}dialog{width:calc(100% - 32px);max-width:480px;border:1px solid #dce2d3;border-radius:12px;padding:26px;background:#fcfdf9;color:#3d5738;max-height:90svh;box-shadow:0 25px 80px #14372a30}dialog::backdrop{background:#17382d70;backdrop-filter:blur(3px)}.dialog-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.dialog-heading .eyebrow{font-size:9px;color:#91a17d}.dialog-heading h2{font-size:22px}.icon-button{border:0;background:none;font-size:28px;color:#839675;width:44px}.form-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-columns input{margin-bottom:8px}.field-help{font-size:10px;color:#9ba58f;line-height:1.8;margin-bottom:18px}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(20px);padding:15px 22px;background:#254d38;color:white;border-radius:8px;font-size:12px;z-index:30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:calc(100% - 32px);box-shadow:0 5px 25px #183d3320}#toast.visible{opacity:1;transform:translateX(-50%)}#toast.error{background:#995d49}.loading{padding:40px;color:#859674}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(min-width:1450px){#main-content{padding-top:44px}.page-heading{margin-bottom:35px}h1{font-size:34px}.stat{min-height:155px;padding:25px}.week-chart{height:220px}.bar-track{height:135px}.bar-track progress{width:132px;bottom:50px;height:33px}}
+@media(max-width:1150px){.sidebar{width:200px;padding-left:13px;padding-right:13px}.main-shell{margin-left:200px;width:calc(100% - 200px)}.brand{font-size:20px}.topbar{padding:0 25px}#main-content{padding:28px 25px 0}h1{font-size:26px}.stats{gap:12px}.stat{padding:18px 15px}.stat>strong{font-size:27px}.dashboard-grid{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px}.segmented small{display:none}.panel-heading{padding:20px 17px}.panel-heading h2{font-size:14px}th,td{padding:13px 12px}.login-story{padding:40px}.login-story h1{font-size:55px}}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr}.dashboard-grid.lower{grid-template-columns:1fr}.recovery-panel{padding-bottom:5px}.validation-grid{grid-template-columns:1fr}.login-story{padding:35px 28px}.login-story h1{font-size:46px}.login-panel{padding:40px 28px}.topbar>span:first-child{max-width:55%;font-size:10px;line-height:1.7}.top-divider{padding:0 5px}.page-heading{align-items:flex-start}.page-heading .primary{font-size:11px;padding:10px 13px}h1{font-size:24px}}
+@media(max-width:680px){.sidebar{width:100%;height:auto;position:relative;padding:16px 18px 0}.sidebar>.brand{font-size:20px}.sidebar .brand img{width:30px;height:30px}.workspace-label,.sidebar-bottom{display:none}.sidebar nav{flex-direction:row;overflow-x:auto;gap:6px;margin-top:18px;padding-bottom:10px;scrollbar-width:none}.nav-item{flex-shrink:0;padding:9px 10px;min-height:40px;font-size:11px;gap:7px}.nav-item>span{font-size:16px;width:15px}.app-shell{display:block}.main-shell{width:100%;margin:0}.topbar{height:48px;padding:0 18px}.topbar>span:first-child{font-size:9px;max-width:65%}.demo-pill{font-size:8px;padding:6px 8px}#main-content{padding:23px 17px 0}.page-heading{flex-wrap:wrap;gap:17px;margin-bottom:22px}h1{font-size:26px;letter-spacing:-.9px}.page-heading .eyebrow{font-size:8px;margin-bottom:10px}.page-heading .muted{font-size:11px}.page-heading .primary{font-size:12px;min-height:42px}.toolbar{align-items:flex-start;gap:13px;flex-wrap:wrap;padding-bottom:17px}.segmented{padding:3px;gap:1px}.segmented button{padding:6px 9px;gap:6px;font-size:11px;min-height:37px}.small-avatar{width:21px;height:21px;font-size:9px}.month-picker{margin-left:auto;gap:4px}.month-picker input{font-size:11px;padding:5px;width:136px}.month-picker button{width:29px;min-height:34px}.context-line{font-size:9px;align-items:flex-start;padding:17px 0}.context-line .separator{margin:0 3px}.badge{font-size:8px;padding:6px 7px}.stats{gap:11px;margin-bottom:17px}.stat{padding:17px 14px;min-height:132px}.stat>p{font-size:10px;margin-bottom:15px}.stat>strong{font-size:28px;margin-bottom:10px}.stat>span{font-size:9px}.panel-heading{padding:19px 17px 16px}.panel-heading h2{font-size:15px}.dashboard-grid{gap:17px}.dashboard-grid.lower{margin-top:17px}.week-chart{gap:14px}.main-footer{font-size:8px;gap:10px;padding:25px 0}.main-footer>span:last-child{max-width:85px;text-align:right}.inline-note{font-size:10px;padding:13px;margin-bottom:17px}.login-layout{display:block}.login-story{min-height:210px;padding:23px}.login-story>div{margin-top:25px}.login-story .eyebrow{font-size:7px;margin-bottom:14px}.login-story h1{font-size:36px;letter-spacing:-1.3px;margin:0}.login-story h1 br{display:none}.login-story>div>p:not(.eyebrow){font-size:11px;line-height:1.8;margin-top:13px}.mountains,.story-footer{display:none}.login-panel{padding:28px 23px;max-width:480px}.login-panel h2{font-size:25px;margin:21px 0 10px}.login-panel form{margin-top:25px}.hint{margin-top:22px}.rules{padding:22px 18px}.rules>p,.rules dd{font-size:12px}.rules dt{font-size:13px}.balance-list>div{font-size:11px}.panel-actions .secondary{white-space:normal}.dialog-actions{gap:8px}.dialog-actions button{font-size:11px;padding:12px}dialog{padding:23px 20px}label input,label select,label textarea{font-size:16px}.topbar::after{content:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.topbar-actions{display:flex;align-items:center;gap:6px}.mobile-logout{display:none}@media(max-width:680px){.mobile-logout{display:block;color:#75866b;width:30px;font-size:19px;min-height:40px}}
+.bar-track progress{background:transparent}.bar-track progress::-webkit-progress-bar{background:transparent}.bar-track progress::-moz-progress-bar{border-radius:4px}.bar-track .reference-bar::-webkit-progress-value{background:#e4ebdc}.bar-track .reference-bar::-moz-progress-bar{background:#e4ebdc}
+.stat>span,.panel-heading p,.panel-footnote,.chart-column small,.reminder p,.recovery-note,.recovery-row,.validation-status p,.entry-note,.field-help{color:#6d7d64}.stat>p,.context-line,.recovery-panel>.big-balance+p,.balance-list>div{color:#64775a}.activity{color:#607b48}.activity.conge{color:#8a7130}.activity.recuperation{color:#657748}.activity.formation{color:#79618f}.activity.repos{color:#74816a}.activity.missing{color:#966847}thead{color:#6f7e63}.main-footer{color:#77866b}
+@media(max-width:680px){.stat>p,.stat>span,.panel-heading p,.panel-footnote,.reminder p,.recovery-row,.recovery-note,.balance-list>div,.context-line{font-size:11px}.reminder strong{font-size:12px}.panel-heading h2{font-size:16px}.date-label,table{font-size:12px}thead,.activity,.text-button{font-size:10px}.page-heading .muted{font-size:12px}.month-picker input{font-size:12px}.main-footer{font-size:9px}.rules dd{font-size:13px}}
+
+.week-tabs{display:flex;gap:8px;overflow:auto;padding:0 20px 20px}.week-tabs button{flex-shrink:0;min-height:44px}.week-tabs .selected{background:#163e35;color:white}.day-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 20px 20px}.day-card{border:1px solid #dce4d4;border-radius:14px;padding:18px;min-width:0}.day-title{display:flex;justify-content:space-between;align-items:center;gap:8px}.day-title h3{font-size:15px;text-transform:capitalize}.day-card p{font-size:13px;line-height:1.7}.planned-line{background:#f1f5ed;border-radius:8px;padding:12px;line-height:1.8;font-size:13px}.day-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.day-actions button{min-height:44px}.day-check{display:flex;align-items:center;gap:8px;width:100%;font-size:13px;min-height:44px}.day-check input{width:22px;height:22px}.month-detail{margin-top:20px}.month-detail summary{padding:20px;cursor:pointer}.computed-duration{font-weight:600;color:#163e35;line-height:1.6}[hidden]{display:none!important}dialog{max-height:90dvh;overflow-y:auto}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #8eaa63;outline-offset:3px}
+@media(max-width:680px){.day-list{grid-template-columns:1fr;padding:0 14px 14px}.day-card{padding:14px}.day-actions button{flex:1;font-size:12px;padding:12px 8px}.day-title .badge{white-space:nowrap}.week-tabs{padding:0 14px 16px}.weekly .panel-actions{display:flex;flex-direction:column;align-items:stretch}.weekly .panel-actions button{white-space:normal;min-height:48px}.day-title h3{font-size:14px}.form-columns{grid-template-columns:repeat(2,minmax(0,1fr))}.form-columns label{min-width:0;font-size:12px}.form-columns input{min-width:0;width:100%;box-sizing:border-box}}
+
+.today-card{padding:22px;margin-bottom:20px;border-left:4px solid #163e35}.today-card h2{margin:0;font-size:22px}.today-card p{line-height:1.8}.today-card button{min-height:48px}
+
+.static-context{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:16px;background:#edf3e6;border:1px solid #dce5d3;border-radius:12px;margin-bottom:24px;font-size:12px;line-height:1.6}.static-context p{margin:4px 0 0}.static-context button{min-height:44px;white-space:normal}.login-panel .reset-demo{margin-top:12px}.form-columns input[type=time]{min-height:44px}dialog{padding-bottom:max(24px,env(safe-area-inset-bottom))}@media(max-width:680px){.static-context{align-items:stretch;flex-direction:column;padding:14px;gap:12px}.static-context button{align-self:flex-start;font-size:12px}.nav-item{min-height:44px}.mobile-logout{min-width:44px;min-height:44px}}
+</style>
+  <script type="module">// Generated from static-demo/. Do not edit this bundle directly.
+const domainModule = (() => {
+// All arithmetic uses integer minutes; dates are civil dates interpreted in UTC.
+const TYPES = ['travail', 'conge', 'recuperation', 'formation', 'repos'];
+class Problem extends Error {
+  constructor(message, status = 400) { super(message); this.status = status; }
+}
+function dateOK(value) {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value)
+    && !Number.isNaN(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
+}
+function yearOf(date) { return Number(date.slice(0, 4)) - (Number(date.slice(5, 7)) < 10 ? 1 : 0); }
+function dates(start, end) {
+  const result = [];
+  for (let d = new Date(start); d <= new Date(end); d.setUTCDate(d.getUTCDate() + 1)) result.push(d.toISOString().slice(0, 10));
+  return result;
+}
+const weekday = date => new Date(date).getUTCDay();
+const base = date => [0, 6].includes(weekday(date)) ? 0 : 420;
+function monthBounds(month) {
+  if (typeof month !== 'string' || !/^\d{4}-(0[1-9]|1[0-2])$/.test(month)) throw new Problem('Mois invalide.');
+  const [y, m] = month.split('-').map(Number);
+  return [month + '-01', new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10)];
+}
+function validateEntry(input) {
+  const { date, kind, planned, actual, note = '' } = input;
+  if (!dateOK(date) || !TYPES.includes(kind)) throw new Problem('Date ou activité invalide.');
+  for (const n of [planned, actual]) if (!Number.isInteger(n) || n < 0 || n > 1440) throw new Problem('Les durées doivent être comprises entre 0 et 24 h, en minutes entières.');
+  if (kind === 'repos' && actual !== 0) throw new Problem('Un repos doit avoir une durée nulle.');
+  if (typeof note !== 'string' || note.length > 500) throw new Problem('Note limitée à 500 caractères.');
+  return { date, kind, planned, actual, note: note.trim() };
+}
+function totals(entries, start, end) {
+  const result = { planned: 0, base: 0, worked: 0, sunday: 0, bonus: 0, leave: 0, recovery: 0, training: 0, balance: 0, missing: 0 };
+  const byDate = new Map(entries.map(e => [e.date, e]));
+  for (const date of dates(start, end)) {
+    const e = byDate.get(date);
+    result.base += base(date);
+    result.planned += e?.planned ?? base(date);
+    if (!e || e.confirmed === false) { if (base(date) || e?.planned) result.missing++; continue; }
+    if (e.kind === 'travail') {
+      result.worked += e.actual;
+      if (weekday(date) === 0) result.sunday += e.actual;
+    }
+    if (e.kind === 'conge') result.leave += e.actual;
+    if (e.kind === 'recuperation') result.recovery += e.actual;
+    if (e.kind === 'formation') result.training += e.actual;
+  }
+  result.bonus = result.sunday;
+  // Recovery time is consumed by not being credited as work. Do not subtract it twice.
+  result.balance = result.worked + result.bonus + result.leave + result.training - result.base;
+  return result;
+}
+function weeksFor(entries, start, end) {
+  let monday = new Date(start);
+  monday.setUTCDate(monday.getUTCDate() - ((monday.getUTCDay() + 6) % 7));
+  const result = [];
+  while (monday.toISOString().slice(0, 10) <= end) {
+    const from = monday.toISOString().slice(0, 10);
+    const sunday = new Date(monday); sunday.setUTCDate(sunday.getUTCDate() + 6);
+    const to = sunday.toISOString().slice(0, 10);
+    result.push({ start: from, end: to, ...totals(entries, from, to) });
+    monday.setUTCDate(monday.getUTCDate() + 7);
+  }
+  return result;
+}
+
+// Civil same-day slots. Empty pairs allow a morning or afternoon off.
+const SLOT_KEYS = ['morningIn', 'morningOut', 'afternoonIn', 'afternoonOut'];
+function slotMinutes(slots) {
+  if (!slots || typeof slots !== 'object') throw new Problem('Horaires requis.');
+  const values = SLOT_KEYS.map(key => {
+    const value = slots[key];
+    if (value === '') return null;
+    if (typeof value !== 'string' || !/^([01]\d|2[0-3]):[0-5]\d$/.test(value)) throw new Problem('Horaire invalide (HH:MM).');
+    return Number(value.slice(0, 2)) * 60 + Number(value.slice(3));
+  });
+  let total = 0;
+  for (const i of [0, 2]) {
+    if ((values[i] === null) !== (values[i + 1] === null)) throw new Problem('Complétez l’arrivée et le départ de chaque période.');
+    if (values[i] !== null) {
+      if (values[i + 1] <= values[i]) throw new Problem('Le départ doit suivre l’arrivée.');
+      total += values[i + 1] - values[i];
+    }
+  }
+  if (values[1] !== null && values[2] !== null && values[2] < values[1]) throw new Problem('Les périodes ne doivent pas se chevaucher.');
+  return total;
+}
+function demoSlots(minutes) {
+  const time = n => `${String(Math.floor(n / 60)).padStart(2, '0')}:${String(n % 60).padStart(2, '0')}`;
+  const morning = Math.min(minutes, 180), afternoon = minutes - morning;
+  return { morningIn: morning ? '09:00' : '', morningOut: morning ? time(540 + morning) : '', afternoonIn: afternoon ? '14:00' : '', afternoonOut: afternoon ? time(840 + afternoon) : '' };
+}
+
+return {TYPES,Problem,dateOK,yearOf,dates,weekday,base,monthBounds,validateEntry,totals,weeksFor,SLOT_KEYS,slotMinutes,demoSlots};
+})();
+const modelModule = (() => {
+// Standalone fictional demo. Every operation happens in this browser only.
+const { Problem, TYPES, SLOT_KEYS, dateOK, yearOf, dates, base, weekday, monthBounds, totals, weeksFor, slotMinutes, demoSlots } = domainModule;
+
+const DEMO_TODAY = '2026-10-31';
+const STORAGE_KEY = 'planning-ubaye-static-v02-data';
+const SESSION_KEY = 'planning-ubaye-static-v02-role';
+const VERSION = 1;
+const copy = value => JSON.parse(JSON.stringify(value));
+const employees = ['profil-a', 'profil-b'];
+const profiles = [
+  { id: 'admin', name: 'Administration fictive', site: 'Démonstration', role: 'admin' },
+  { id: 'profil-a', name: 'Profil A', site: 'Magasin fictif A', role: 'employee' },
+  { id: 'profil-b', name: 'Profil B', site: 'Magasin fictif B', role: 'employee' }
+];
+const blankSlots = () => demoSlots(0);
+const canonicalSlots = value => Object.fromEntries(SLOT_KEYS.map(key => [key, value[key]]));
+const duration = (kind, slots) => kind === 'travail' ? slotMinutes(slots) : kind === 'repos' ? 0 : 420;
+
+function initialData() {
+  const records = {};
+  for (const id of employees) {
+    records[id] = { entries: [], validations: [], years: { 2026: { opening: id === 'profil-a' ? 720 : 420, leaveOpening: 10500, closed: false } } };
+    for (const date of dates('2026-10-01', '2026-10-31')) {
+      let kind = base(date) ? 'travail' : 'repos';
+      let planned = base(date);
+      if (date === '2026-10-11') { kind = 'travail'; planned = id === 'profil-a' ? 300 : 240; }
+      if (date === '2026-10-16') kind = 'formation';
+      if (date === '2026-10-23' && id === 'profil-a') kind = 'recuperation';
+      if (date === '2026-10-26' && id === 'profil-b') kind = 'conge';
+      if (kind !== 'travail') planned = 0;
+      const plannedSlots = demoSlots(planned), confirmed = date < '2026-10-19';
+      records[id].entries.push({ date, kind, plannedKind: kind, planned, plannedSlots, actual: confirmed ? duration(kind, plannedSlots) : 0, actualSlots: confirmed && kind === 'travail' ? copy(plannedSlots) : null, confirmed, revision: 1, note: '' });
+    }
+  }
+  return { version: VERSION, records };
+}
+
+function validData(data) {
+  if (!data || data.version !== VERSION || !data.records || Object.keys(data.records).sort().join() !== employees.slice().sort().join()) return false;
+  for (const id of employees) {
+    const r = data.records[id];
+    if (!r || !Array.isArray(r.entries) || !Array.isArray(r.validations) || !r.years || Array.isArray(r.years) || r.entries.length > 30000) return false;
+    const seen = new Set();
+    for (const e of r.entries) {
+      if (!e || !dateOK(e.date) || seen.has(e.date) || !TYPES.includes(e.kind) || !TYPES.includes(e.plannedKind) || typeof e.confirmed !== 'boolean' || !Number.isInteger(e.revision) || e.revision < 1 || typeof e.note !== 'string' || e.note.length > 500) return false;
+      seen.add(e.date);
+      if (!Number.isInteger(e.planned) || e.planned < 0 || e.planned > 1440 || !Number.isInteger(e.actual) || e.actual < 0 || e.actual > 1440) return false;
+      try {
+        if (e.planned !== (e.plannedKind === 'travail' ? slotMinutes(e.plannedSlots) : 0)) return false;
+        if (e.plannedKind !== 'travail' && slotMinutes(e.plannedSlots) !== 0) return false;
+        if (!e.confirmed && (e.actual !== 0 || e.actualSlots !== null)) return false;
+        if (e.confirmed && e.actual !== duration(e.kind, e.actualSlots)) return false;
+        if (e.kind !== 'travail' && e.actualSlots !== null) return false;
+      } catch { return false; }
+    }
+    const months = new Set();
+    for (const v of r.validations) {
+      if (!v || typeof v.month !== 'string' || months.has(v.month) || typeof v.signer !== 'string' || v.signer.length < 3 || v.signer.length > 100 || !dateOK(v.validated_at?.slice(0, 10)) || !dateOK(v.signed_at?.slice(0, 10))) return false;
+      try { monthBounds(v.month); } catch { return false; }
+      months.add(v.month);
+    }
+    if (!Object.hasOwn(r.years, '2026')) return false;
+    for (const [year, record] of Object.entries(r.years)) {
+      if (!/^\d{4}$/.test(year) || Number(year) < 2026 || Number(year) > 2101 || !record || typeof record.closed !== 'boolean' || !Number.isInteger(record.opening) || !Number.isInteger(record.leaveOpening)) return false;
+      if (record.closed && (!Number.isInteger(record.closing) || !Number.isInteger(record.leaveClosing))) return false;
+    }
+  }
+  return true;
+}
+
+function createDemo(options = {}) {
+  let data = initialData(), me = null, storage, sessionStorage;
+  let persistent = true, sessionPersistent = true;
+  let status = 'Modifications fictives conservées uniquement dans ce navigateur.';
+  try { storage = Object.hasOwn(options, 'storage') ? options.storage : globalThis.localStorage; if (!storage) throw new Error(); }
+  catch { persistent = false; }
+  try { sessionStorage = Object.hasOwn(options, 'sessionStorage') ? options.sessionStorage : globalThis.sessionStorage; if (!sessionStorage) throw new Error(); }
+  catch { sessionPersistent = false; }
+  function memoryWarning() { status = 'Stockage indisponible : modifications conservées seulement pendant cette ouverture. Ne rechargez pas la page pour les conserver.'; }
+  function readData() {
+    if (!persistent) return;
+    try {
+      const raw = storage.getItem(STORAGE_KEY);
+      if (raw === null) return;
+      const parsed = JSON.parse(raw);
+      if (!validData(parsed)) throw new Error('Corrupt');
+      data = parsed;
+    } catch {
+      data = initialData();
+      status = 'Les données locales étaient indisponibles ou invalides. Les exemples fictifs ont été réinitialisés.';
+      try { storage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+      catch { persistent = false; memoryWarning(); }
+    }
+  }
+  function save() {
+    if (!persistent) { memoryWarning(); return; }
+    try { storage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+    catch { persistent = false; memoryWarning(); }
+  }
+  function readSession() {
+    if (!sessionPersistent) return;
+    try { const id = sessionStorage.getItem(SESSION_KEY); me = profiles.find(p => p.id === id) ?? null; }
+    catch { sessionPersistent = false; }
+  }
+  function saveSession() {
+    if (!sessionPersistent) return;
+    try { if (me) sessionStorage.setItem(SESSION_KEY, me.id); else sessionStorage.removeItem(SESSION_KEY); }
+    catch { sessionPersistent = false; }
+  }
+  if (!persistent) memoryWarning();
+  readData(); readSession();
+  function checkOpen(id, date) {
+    const record = data.records[id];
+    const year = record.years[yearOf(date)];
+    if (!year) throw new Problem('Exercice non ouvert. Clôturez l’exercice précédent pour reporter les soldes.', 409);
+    if (year.closed) throw new Problem('Cet exercice est clôturé.', 423);
+    if (record.validations.some(v => v.month === date.slice(0, 7))) throw new Problem('Ce mois est validé et verrouillé.', 423);
+  }
+  function summary(id, year, month) {
+    const all = data.records[id].entries, opening = data.records[id].years[year];
+    const [from, to] = monthBounds(month);
+    const end = `${year + 1}-09-30`, start = `${year}-10-01`;
+    const elapsedEnd = DEMO_TODAY < end ? DEMO_TODAY : end;
+    const elapsed = elapsedEnd >= start ? totals(all, start, elapsedEnd) : totals([], '2000-01-02', '2000-01-01');
+    return {
+      month: totals(all, from, to), annual: totals(all, start, end), elapsed,
+      weeks: weeksFor(all, from, to).map(w => { const a = w.start < start ? start : w.start, b = w.end > end ? end : w.end; return { start: a, end: b, ...totals(all, a, b) }; }),
+      opening: opening?.opening ?? 0, leaveOpening: opening?.leaveOpening ?? 0,
+      balance: (opening?.opening ?? 0) + elapsed.balance, leaveRemaining: (opening?.leaveOpening ?? 0) - elapsed.leave,
+      closed: Boolean(opening?.closed), opened: Boolean(opening), closing: opening?.closing, leaveClosing: opening?.leaveClosing
+    };
+  }
+  async function request(path, input = {}) {
+    readData(); readSession();
+    const [action, query = ''] = path.split('?');
+    if (action === 'login') {
+      me = profiles.find(p => p.id === input.login) ?? null;
+      if (!me) throw new Problem('Choisissez un profil fictif.');
+      saveSession(); return { user: copy(me) };
+    }
+    if (!me) throw new Problem('Choisissez un profil fictif pour continuer.', 401);
+    if (action === 'logout') { me = null; saveSession(); return { ok: true }; }
+    if (action === 'state') {
+      const month = new URLSearchParams(query).get('month') ?? '2026-10';
+      monthBounds(month); const year = yearOf(month + '-01');
+      const visible = profiles.filter(p => p.role === 'employee' && (me.role === 'admin' || p.id === me.id));
+      return copy({ me, month, year, users: visible.map(p => ({ ...p, entries: data.records[p.id].entries.filter(e => yearOf(e.date) === year).sort((a, b) => a.date.localeCompare(b.date)), validations: data.records[p.id].validations, summary: summary(p.id, year, month) })) });
+    }
+    const id = input.userId;
+    if (!employees.includes(id)) throw new Problem('Profil fictif inconnu.');
+    if (me.role !== 'admin' && me.id !== id) throw new Problem('Accès réservé au profil sélectionné dans cette simulation.', 403);
+    const record = data.records[id];
+    const adminOnly = () => { if (me.role !== 'admin') throw new Problem('Action réservée au rôle administrateur de la simulation.', 403); };
+    const checkDate = date => { if (!dateOK(date)) throw new Problem('Date invalide.'); checkOpen(id, date); };
+    let changed = false;
+    if (action === 'plan') {
+      adminOnly(); checkDate(input.date);
+      if (!TYPES.includes(input.kind)) throw new Problem('Activité invalide.');
+      const slots = input.kind === 'travail' ? canonicalSlots(input.slots ?? {}) : blankSlots();
+      const planned = input.kind === 'travail' ? slotMinutes(slots) : 0;
+      if (input.kind === 'travail' && planned === 0) throw new Problem('Prévoyez au moins une période de travail.');
+      let entry = record.entries.find(e => e.date === input.date);
+      if (!entry) { entry = { date: input.date, kind: input.kind, actual: 0, actualSlots: null, confirmed: false, revision: 0, note: '' }; record.entries.push(entry); }
+      Object.assign(entry, { plannedKind: input.kind, plannedSlots: slots, planned, revision: entry.revision + 1 });
+      if (!entry.confirmed) entry.kind = input.kind;
+      changed = true;
+    } else if (action === 'entry') {
+      checkDate(input.date);
+      if (input.date > DEMO_TODAY) throw new Problem('Une journée future ne peut pas être saisie.', 409);
+      if (!TYPES.includes(input.kind)) throw new Problem('Activité invalide.');
+      if ('planned' in input || 'plannedSlots' in input || 'actual' in input) throw new Problem('Utilisez les quatre horaires pour calculer le réel.');
+      const e = record.entries.find(e => e.date === input.date);
+      if (!e) throw new Problem('Préparez cette journée avec le rôle administrateur fictif.', 409);
+      if (input.revision !== e.revision) throw new Problem('Planning modifié : rechargez la page.', 409);
+      const actual = duration(input.kind, input.slots);
+      if (input.kind === 'travail' && !actual) throw new Problem('Renseignez au moins une période travaillée.');
+      const note = input.note ?? '';
+      if (typeof note !== 'string' || note.length > 500) throw new Problem('Note limitée à 500 caractères.');
+      Object.assign(e, { kind: input.kind, actual, actualSlots: input.kind === 'travail' ? canonicalSlots(input.slots) : null, confirmed: true, revision: e.revision + 1, note: note.trim() });
+      changed = true;
+    } else if (action === 'confirm') {
+      if (!Array.isArray(input.days) || !input.days.length || input.days.length > 7 || new Set(input.days.map(d => d?.date)).size !== input.days.length) throw new Problem('Sélectionnez entre 1 et 7 journées distinctes.');
+      const prepared = input.days.map(day => {
+        if (!day) throw new Problem('Date invalide.');
+        checkDate(day.date);
+        if (day.date > DEMO_TODAY) throw new Problem('Une journée future ne peut pas être confirmée.', 409);
+        const e = record.entries.find(e => e.date === day.date);
+        if (!e || e.confirmed || e.revision !== day.revision) throw new Problem('Planning modifié ou journée déjà confirmée : rechargez la page.', 409);
+        return e;
+      });
+      for (const e of prepared) Object.assign(e, { kind: e.plannedKind, actual: duration(e.plannedKind, e.plannedSlots), actualSlots: e.plannedKind === 'travail' ? copy(e.plannedSlots) : null, confirmed: true, revision: e.revision + 1 });
+      changed = true;
+    } else if (action === 'validate') {
+      adminOnly(); const [start, end] = monthBounds(input.month); checkOpen(id, start);
+      const count = totals(record.entries, start, end).missing;
+      if (count) throw new Problem(`${count} journée(s) prévue(s) restent à confirmer.`, 409);
+      if (typeof input.signature !== 'string' || input.signature.trim().length < 3 || input.signature.length > 100) throw new Problem('Indiquez une signature fictive de 3 à 100 caractères.');
+      const at = `${DEMO_TODAY}T12:00:00.000Z`;
+      record.validations.push({ month: input.month, validated_at: at, signer: input.signature.trim(), signed_at: at });
+      changed = true;
+    } else if (action === 'reopen') {
+      adminOnly(); const [start] = monthBounds(input.month);
+      if (record.years[yearOf(start)]?.closed) throw new Problem('Exercice clôturé : réouverture impossible.', 423);
+      record.validations = record.validations.filter(v => v.month !== input.month); changed = true;
+    } else if (action === 'close-year') {
+      adminOnly(); const year = input.year;
+      if (!Number.isInteger(year) || year < 2026 || year > 2100) throw new Problem('Exercice invalide.');
+      const opening = record.years[year];
+      if (!opening || opening.closed) throw new Problem('Exercice absent ou déjà clôturé.', 409);
+      const start = `${year}-10-01`, end = `${year + 1}-09-30`;
+      if (record.validations.filter(v => v.month >= start.slice(0, 7) && v.month <= end.slice(0, 7)).length !== 12) throw new Problem('Validez les 12 mois avant de clôturer.', 409);
+      if (record.years[year + 1]) throw new Problem('L’exercice suivant existe déjà.', 409);
+      const total = totals(record.entries, start, end), closing = opening.opening + total.balance, leaveClosing = opening.leaveOpening - total.leave;
+      Object.assign(opening, { closed: true, closing, leaveClosing });
+      record.years[year + 1] = { opening: closing, leaveOpening: leaveClosing + 10500, closed: false };
+      save(); return { ok: true, closing, leaveClosing };
+    } else throw new Problem('Action de démonstration inconnue.', 404);
+    if (changed) save();
+    return { ok: true };
+  }
+  function reset() { data = initialData(); me = null; save(); saveSession(); return { ok: true }; }
+  return { request, reset, storageStatus: () => status };
+}
+
+return {DEMO_TODAY,STORAGE_KEY,SESSION_KEY,createDemo};
+})();
+const { createDemo, DEMO_TODAY } = modelModule;
+const demo = createDemo();
+const app = document.querySelector('#app');
+const editor = document.querySelector('#editor');
+const kinds = { travail: 'Travail', conge: 'Congé payé', recuperation: 'Récupération', formation: 'Formation', repos: 'Repos' };
+let state, month = '2026-10', selected = 'profil-a', page = 'dashboard', weekIndex = 0;
+const h = n => `${(n / 60).toLocaleString('fr-FR', { maximumFractionDigits: 2 })} h`;
+const signed = n => `${n > 0 ? '+' : ''}${h(n)}`;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, x => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[x]));
+const fmt = (date, options = { day: 'numeric', month: 'long' }) => new Date(date + 'T12:00:00Z').toLocaleDateString('fr-FR', { ...options, timeZone: 'UTC' });
+const monthName = () => fmt(month + '-01', { month: 'long', year: 'numeric' });
+const user = () => state.users.find(u => u.id === selected) ?? state.users[0];
+const locked = u => u.summary.closed || u.validations.some(v => v.month === month);
+function notice(message, error = false) {
+  const t = document.querySelector('#toast'); t.textContent = message; t.className = error ? 'visible error' : 'visible';
+  clearTimeout(notice.timer); notice.timer = setTimeout(() => t.className = '', 5500);
+}
+async function api(path, data) {
+  try { return await demo.request(path, data); }
+  catch (error) { if (error.status === 401 && path !== 'login') login(); throw error; }
+}
+async function load() {
+  const first = !state;
+  state = await api('state?month=' + month);
+  if (!state.users.some(u => u.id === selected)) selected = state.users[0].id;
+  if (first) {
+    page = state.me.role === 'employee' ? 'planning' : 'dashboard';
+    const i = user().summary.weeks.findIndex(w => w.start <= today() && w.end >= today());
+    weekIndex = Math.max(0, i);
+  }
+  weekIndex = Math.min(weekIndex, user().summary.weeks.length - 1);
+  render();
+}
+const icon = (name) => ({ dashboard: '◫', planning: '▦', balances: '◷', validation: '✓', rules: 'ⓘ' }[name]);
+function login() {
+  state = undefined;
+  app.innerHTML = `<main class="login-layout"><section class="login-story"><a class="brand" href="./"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCI+PHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiByeD0iMjIiIGZpbGw9IiMxNjNlMzUiLz48cGF0aCBkPSJNMTMgNTQgMzIgMjNsMTMgMjAgOC0xMiAxNiAyM0gxM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0ibTI2IDMzIDYgNSA2LTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+Cg==" alt=""><span>planning<span class="brand-light">ubaye</span></span></a><div><p class="eyebrow">DÉMONSTRATION STATIQUE · V0.2</p><h1>Le bon rythme.<br>En équipe.</h1><p>Découvrez la saisie par exception.<br>Tout se passe dans votre navigateur.</p></div><p class="story-footer">Planning Ubaye · exemples inventés</p></section><section class="login-panel"><span class="demo-pill">● Aucun compte réel</span><h2>Explorer la démonstration</h2><p class="muted">Choisissez un rôle fictif. Aucun mot de passe n’est nécessaire.</p><form id="login-form"><label>Profil de démonstration<select name="login"><option value="profil-a">Profil A · salarié fictif</option><option value="profil-b">Profil B · salarié fictif</option><option value="admin">Administration fictive</option></select></label><button class="primary" type="submit">Ouvrir la démonstration <span>→</span></button><p id="login-error" role="alert"></p></form><div class="hint"><strong>Vos essais restent sur cet appareil.</strong><p>${esc(demo.storageStatus())}</p><p>Date simulée : 31 octobre 2026. Horaires, soldes et signatures sont fictifs. N’entrez aucune information réelle.</p><button type="button" class="secondary reset-demo">Réinitialiser les essais</button></div><p class="login-bottom">Sans serveur, sans synchronisation et sans connexion Google Sheets.</p></section></main>`;
+  bindReset();
+  document.querySelector('#login-form').onsubmit = async event => {
+    event.preventDefault(); const button = event.target.querySelector('button'); button.disabled = true;
+    try { await api('login', Object.fromEntries(new FormData(event.target))); await load(); }
+    catch (error) { document.querySelector('#login-error').textContent = error.message; }
+    finally { button.disabled = false; }
+  };
+}
+function bindReset() {
+  document.querySelectorAll('.reset-demo').forEach(b => b.onclick = () => {
+    if (!confirm('Effacer uniquement les essais de cette démonstration sur cet appareil et retrouver les exemples fictifs ?')) return;
+    demo.reset(); month = '2026-10'; weekIndex = 0; selected = 'profil-a'; login();
+    notice('Exemples fictifs réinitialisés.');
+  });
+}
+function render() {
+  if (!state) return;
+  const u = user(), admin = state.me.role === 'admin';
+  const nav = [['dashboard', 'Vue d’ensemble'], ['planning', 'Planning & saisie'], ['balances', 'Mes compteurs'], ...(admin ? [['validation', 'Validation mensuelle']] : []), ['rules', 'Règles de calcul']];
+  app.innerHTML = `<div class="app-shell"><aside class="sidebar"><a class="brand" href="./"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCI+PHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiByeD0iMjIiIGZpbGw9IiMxNjNlMzUiLz48cGF0aCBkPSJNMTMgNTQgMzIgMjNsMTMgMjAgOC0xMiAxNiAyM0gxM1oiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0ibTI2IDMzIDYgNSA2LTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U2ZWRjOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+Cg==" alt=""><span>planning<span class="brand-light">ubaye</span></span></a><p class="workspace-label">VOTRE ESPACE ${admin ? 'ADMINISTRATEUR' : 'INDIVIDUEL'}</p><nav aria-label="Navigation principale">${nav.map(([id, label]) => `<button data-page="${id}" class="nav-item ${page === id ? 'active' : ''}" ${page === id ? 'aria-current="page"' : ''}><span aria-hidden="true">${icon(id)}</span>${label}</button>`).join('')}</nav><div class="sidebar-bottom"><div class="period-card"><span>EXERCICE EN COURS</span><strong>01 oct. ${state.year}</strong><span>au 30 sept. ${state.year + 1}</span><small>Base de 35 h / semaine</small></div><div class="sidebar-user"><span class="avatar">${admin ? 'AD' : esc(state.me.name[0])}</span><div><strong>${esc(state.me.name)}</strong><small>${admin ? 'Administrateur' : esc(state.me.site)}</small></div><button class="logout" title="Changer de rôle" aria-label="Changer de rôle">↪</button></div></div></aside><div class="main-shell"><header class="topbar"><span>Planning Ubaye · simulation locale</span><div class="topbar-actions"><span class="demo-pill">● Démo statique</span><button class="logout mobile-logout" title="Changer de rôle" aria-label="Changer de rôle">↪</button></div></header><main id="main-content" tabindex="-1"><section class="static-context" aria-label="Mode démonstration"><div><strong>Simulation · 31 octobre 2026</strong><p>${esc(demo.storageStatus())} · Aucune donnée partagée.</p></div><button type="button" class="secondary reset-demo">Réinitialiser les essais</button></section><div class="page-heading"><div><p class="eyebrow">${admin ? 'PILOTAGE DE L’ÉQUIPE' : 'MON ESPACE'}</p><h1>${ { dashboard: 'Une vue claire sur votre temps.', planning: 'Le planning, au quotidien.', balances: 'Chaque heure compte.', validation: 'Un mois prêt à valider.', rules: 'Des règles transparentes.' }[page]}</h1><p class="muted">${ { dashboard: 'Le suivi des heures et des équilibres, en un coup d’œil.', planning: 'Confirmez vos horaires prévus. Corrigez seulement ce qui a changé.', balances: 'Vos soldes de la semaine à l’exercice annuel.', validation: 'Vérifiez les saisies de chaque magasin, puis verrouillez le mois.', rules: 'Les hypothèses de cette première version, à adapter ensemble.' }[page]}</p></div>${page !== 'rules' ? `<button class="primary add-entry" ${locked(u) || !u.summary.opened ? 'disabled' : ''}>Ouvrir une journée</button>` : ''}</div>${page !== 'rules' ? `<div class="toolbar"><div class="segmented" aria-label="Profil consulté">${state.users.map(person => `<button data-user="${person.id}" class="${person.id === u.id ? 'selected' : ''}"><span class="small-avatar">${person.name[0]}</span>${esc(person.name)}<small>${esc(person.site)}</small></button>`).join('')}</div><div class="month-picker"><button data-month="-1" aria-label="Mois précédent">‹</button><label><span class="sr-only">Mois consulté</span><input type="month" id="month" value="${month}" min="2026-10" max="2101-09"></label><button data-month="1" aria-label="Mois suivant">›</button></div></div><div class="context-line"><span><span class="status-dot"></span> ${esc(u.name)} · ${esc(u.site)} <span class="separator">/</span> ${esc(monthName())}</span><span class="badge ${locked(u) ? 'locked' : ''}">${locked(u) ? '▣ Validé · saisies verrouillées' : u.summary.opened ? 'Saisies ouvertes' : 'Exercice non ouvert'}</span></div>` : ''}${page === 'dashboard' ? dashboard(u) : page === 'planning' ? planning(u) : page === 'balances' ? balances(u) : page === 'validation' ? validation() : rules()}<footer class="main-footer"><span>Planning Ubaye <span class="separator">·</span> Ensemble, au bon rythme.</span><span>V0.2 · démonstration statique</span></footer></main></div></div>`;
+  bind();
+  const tabs = document.querySelector('.week-tabs');
+  if (tabs) { const active = tabs.querySelector('[aria-pressed="true"]'); if (active) tabs.scrollLeft = active.offsetLeft - tabs.offsetLeft - 14; }
+}
+function stat(label, value, detail, cls = '') { return `<article class="stat ${cls}"><p>${label}</p><strong>${value}</strong><span>${detail}</span></article>`; }
+function dashboard(u) {
+  const s = u.summary, m = s.month;
+  return `<div class="stats">${stat('Heures réalisées', h(m.worked), `${h(m.planned)} prévues ce mois-ci`)}${stat('Heures majorées', '+' + h(m.bonus), `${h(m.sunday)} le dimanche · coefficient × 2`, 'purple')}${stat('Solde de récupération', signed(s.balance), 'Report inclus · arrêté à ce jour', 'green')}${stat('Congés disponibles', h(s.leaveRemaining), 'Solde en heures · arrêté à ce jour', 'sand')}</div><div class="dashboard-grid"><section class="panel"><div class="panel-heading"><div><h2>Le rythme du mois</h2><p>Heures réalisées et référence de 35 h</p></div><span class="badge">${esc(monthName())}</span></div><div class="chart-legend"><span>● Réalisées</span><span>▱ Référence</span></div><div class="week-chart">${s.weeks.map((w, i) => `<div class="chart-column"><span>${h(w.worked)}</span><div class="bar-track"><progress class="reference-bar" max="${Math.max(3000, ...s.weeks.map(w => w.worked))}" value="${w.base}" aria-hidden="true"></progress><progress max="${Math.max(3000, ...s.weeks.map(w => w.worked))}" value="${w.worked}" aria-label="Semaine du ${w.start} : ${h(w.worked)}"></progress></div><strong>S${i + 1}</strong><small>${fmt(w.start, { day: 'numeric', month: 'short' })}</small></div>`).join('')}</div><p class="panel-footnote">Référence : 35 h sur une semaine complète. Les semaines couvrent le lundi au dimanche, y compris les jours du mois voisin. Les limites de l’exercice sont proratisées.</p></section><section class="panel recovery-panel"><div class="panel-heading"><div><p class="eyebrow">VOTRE ÉQUILIBRE</p><h2>Du temps pour souffler.</h2></div><span class="leaf" aria-hidden="true">↗</span></div><strong class="big-balance">${signed(s.balance)}</strong><p>de récupération à ce jour</p><div class="recovery-row"><span>Report de l’exercice précédent</span><strong>${signed(s.opening)}</strong></div><div class="recovery-row"><span>Mouvement depuis le 1er octobre</span><strong>${signed(s.elapsed.balance)}</strong></div><div class="recovery-note">Les dimanches sont comptés double.<br>5 h travaillées = 10 h créditées.</div></section></div><div class="dashboard-grid lower"><section class="panel"><div class="panel-heading"><div><h2>Les journées du mois</h2><p>Un aperçu des dernières activités renseignées</p></div><button class="text-button" data-page="planning">Tout voir →</button></div>${entryTable(u, true)}</section><section class="panel"><div class="panel-heading"><div><h2>À garder en tête</h2><p>Votre suivi, simplement</p></div></div><div class="reminder"><span class="reminder-icon">✓</span><div><strong>${locked(u) ? 'Le mois est verrouillé' : 'La saisie reste ouverte'}</strong><p>${locked(u) ? 'La validation protège les heures de ce mois.' : 'Vous pouvez compléter et corriger vos journées.'}</p></div></div><div class="reminder"><span class="reminder-icon purple">☼</span><div><strong>${h(m.sunday)} le dimanche</strong><p>${h(m.sunday * 2)} créditées, dont ${h(m.bonus)} de majoration.</p></div></div><div class="reminder"><span class="reminder-icon sand">◷</span><div><strong>${m.missing} journée(s) à renseigner</strong><p>Sur le mois complet. Les jours manquants diminuent le solde provisoire.</p></div></div></section></div>`;
+}
+function monthDays() {
+  const result = [], date = new Date(month + '-01T12:00:00Z');
+  while (date.toISOString().startsWith(month)) { result.push(date.toISOString().slice(0, 10)); date.setUTCDate(date.getUTCDate() + 1); }
+  return result;
+}
+function entryTable(u, compact = false) {
+  const all = new Map(u.entries.map(e => [e.date, e]));
+  const ds = compact ? monthDays().filter(d => all.has(d) && all.get(d).kind !== 'repos').slice(-5) : monthDays();
+  return `<div class="table-wrap"><table><thead><tr><th>Journée</th><th>Activité</th><th>Prévues</th><th>${compact ? 'Durée' : 'Réalisées / absence'}</th>${compact ? '' : '<th>Majoration</th>'}<th><span class="sr-only">Action</span></th></tr></thead><tbody>${ds.map(date => {
+    const e = all.get(date), sunday = new Date(date).getUTCDay() === 0, weekend = [0, 6].includes(new Date(date).getUTCDay());
+    return `<tr class="${weekend ? 'weekend' : ''}"><th scope="row"><span class="date-label">${fmt(date, { weekday: 'short', day: '2-digit', month: 'short' })}</span>${sunday ? '<small class="sunday-label">Dimanche × 2</small>' : ''}</th><td><span class="activity ${e?.kind ?? 'missing'}">${e ? kinds[e.kind] : 'À renseigner'}</span>${!compact && e?.note ? `<small class="entry-note">${esc(e.note)}</small>` : ''}</td><td>${h(e?.planned ?? (weekend ? 0 : 420))}</td><td class="number">${e?.confirmed === false ? 'À confirmer' : e ? h(e.actual) : '—'}</td>${compact ? '' : `<td class="bonus-value">${e?.kind === 'travail' && sunday ? '+' + h(e.actual) : '—'}</td>`}<td><button class="edit-button" data-date="${date}" ${locked(u) || !u.summary.opened ? 'disabled' : ''} aria-label="Modifier le ${fmt(date)}">${locked(u) ? '▣' : '✎'}</button></td></tr>`;
+  }).join('')}</tbody></table></div>`;
+}
+const slotKeys = ['morningIn', 'morningOut', 'afternoonIn', 'afternoonOut'];
+const slotLabels = ['Arrivée du matin', 'Départ du matin', 'Arrivée de l’après-midi', 'Départ de l’après-midi'];
+const emptySlots = () => Object.fromEntries(slotKeys.map(k => [k, '']));
+const today = () => DEMO_TODAY;
+const slotText = slots => slots ? [slots.morningIn ? `${slots.morningIn}–${slots.morningOut}` : '', slots.afternoonIn ? `${slots.afternoonIn}–${slots.afternoonOut}` : ''].filter(Boolean).join(' · ') || 'Sans horaire' : '—';
+function weekDates(u) {
+  const w = u.summary.weeks[Math.min(weekIndex, u.summary.weeks.length - 1)];
+  const days = [];
+  for (let d = new Date(w.start); d <= new Date(w.end); d.setUTCDate(d.getUTCDate() + 1)) days.push(d.toISOString().slice(0, 10));
+  return days;
+}
+function dayLocked(u, date) { return u.summary.closed || !u.summary.opened || u.validations.some(v => v.month === date.slice(0, 7)); }
+function canConfirm(u, e) { return e && e.confirmed === false && e.date <= today() && !dayLocked(u, e.date); }
+function planning(u) {
+  const admin = state.me.role === 'admin';
+  const current = u.entries.find(e => e.date === today());
+  const quick = !admin && current && current.date.startsWith(month) ? `<section class="panel today-card"><p class="eyebrow">MA JOURNÉE · ${fmt(current.date)}</p><h2>${esc(kinds[current.plannedKind])}</h2><p>Prévu · ${esc(slotText(current.plannedSlots))}</p>${canConfirm(u, current) ? `<button class="primary" data-confirm-day="${current.date}">Confirmer ma journée</button>` : `<p>${dayLocked(u, current.date) ? 'Mois verrouillé' : '✓ Journée confirmée'}</p>`}</section>` : '';
+  return `${quick}<div class="inline-note"><span>✓</span><p>${admin ? 'Préparez les horaires des profils fictifs A et B. Les salariés confirment leurs journées ou corrigent les exceptions.' : 'Vos horaires sont déjà prêts. S’ils ont été respectés, confirmez simplement la journée. Sinon, corrigez uniquement les horaires concernés.'}</p></div><section class="panel weekly"><div class="panel-heading"><div><h2>Ma semaine</h2><p>Les journées futures restent prévisionnelles · base 35 h</p></div></div><div class="week-tabs" aria-label="Semaine consultée">${u.summary.weeks.map((w, i) => `<button class="secondary ${i === weekIndex ? 'selected' : ''}" data-week="${i}" aria-pressed="${i === weekIndex}">Du ${fmt(w.start, { day: 'numeric', month: 'short' })}</button>`).join('')}</div><div class="day-list">${weekDates(u).map(date => {
+    const e = u.entries.find(e => e.date === date), disabled = dayLocked(u, date), future = date > today();
+    const kind = e?.confirmed === false ? e.plannedKind : e?.kind;
+    return `<article class="day-card"><div class="day-title"><h3>${fmt(date, { weekday: 'long', day: 'numeric', month: 'short' })}</h3><span class="badge">${disabled ? 'Verrouillé' : e?.confirmed ? '✓ Confirmée' : future ? 'À venir' : 'À confirmer'}</span></div><span class="activity ${kind ?? 'missing'}">${kinds[kind] ?? 'À préparer par l’administration'}</span><p class="planned-line">Prévu · ${kinds[e?.plannedKind] ?? '—'}<br><strong>${esc(slotText(e?.plannedSlots))}</strong> ${e ? e.plannedKind === 'travail' ? `· ${h(e.planned)}` : e.plannedKind === 'repos' ? '· 0 h travaillée' : '· 7 h d’activité' : ''}</p>${e?.confirmed ? `<p>${e.kind === 'travail' ? 'Réel · ' + esc(slotText(e.actualSlots)) + ' · ' : esc(kinds[e.kind]) + ' · '}<strong>${h(e.actual)}</strong>${e.kind !== 'travail' ? ' d’activité · 0 h travaillée' : ''}${e.kind === 'travail' && new Date(date).getUTCDay() === 0 ? ` + ${h(e.actual)} de majoration dimanche` : ''}</p>` : '<p class="muted">Aucune heure réelle créditée avant confirmation.</p>'}<div class="day-actions">${!admin && canConfirm(u, e) ? `<label class="day-check"><input type="checkbox" data-select-day="${date}" aria-label="Sélectionner le ${fmt(date)}"> Inchangée</label><button class="primary" data-confirm-day="${date}">Confirmer ma journée</button>` : ''}<button class="secondary" data-date="${date}" ${disabled || (!admin && (!e || future)) ? 'disabled' : ''}>${admin ? 'Préparer les horaires' : 'Modifier mes horaires'}</button></div></article>`;
+  }).join('')}</div>${!admin ? '<div class="panel-actions"><button id="select-unchanged" class="secondary">Sélectionner les journées inchangées</button><button id="confirm-selected" class="primary" disabled>Confirmer les journées sélectionnées</button><small>Seules les journées inchangées sélectionnées sont confirmées.</small></div>' : ''}</section><details class="panel month-detail"><summary>Consulter le récapitulatif mensuel</summary>${entryTable(u)}</details>`;
+}
+function balances(u) {
+  const s = u.summary;
+  return `<div class="stats">${stat('Report de récupération', signed(s.opening), 'À l’ouverture du 1er octobre')}${stat('Récupérations prises', h(s.elapsed.recovery), 'Depuis le début de l’exercice')}${stat('Formations réalisées', h(s.elapsed.training), 'Créditées dans la base horaire', 'purple')}${stat('Congés consommés', h(s.elapsed.leave), `Sur ${h(s.leaveOpening)} à l’ouverture`, 'sand')}</div><section class="panel"><div class="panel-heading"><div><h2>Soldes hebdomadaires</h2><p>Du lundi au dimanche · limites d’exercice proratisées · hors report</p></div></div><div class="table-wrap"><table><thead><tr><th>Semaine du</th><th>Base</th><th>Prévues</th><th>Travail</th><th>Dimanche</th><th>Majoration</th><th>Solde</th></tr></thead><tbody>${s.weeks.map(w => `<tr><th>${fmt(w.start)}</th><td>${h(w.base)}</td><td>${h(w.planned)}</td><td>${h(w.worked)}</td><td>${h(w.sunday)}</td><td>+${h(w.bonus)}</td><td class="number">${signed(w.balance)}</td></tr>`).join('')}</tbody></table></div></section><div class="dashboard-grid lower"><section class="panel"><div class="panel-heading"><div><h2>Bilan du mois complet</h2><p>${esc(monthName())} · ${s.month.missing} journée(s) manquante(s)</p></div></div>${balanceRows(s.month)}<p class="panel-footnote">Les absences et formations sont comptées séparément. Une récupération n’est pas créditée comme du travail.</p></section><section class="panel"><div class="panel-heading"><div><h2>Exercice ${state.year} — ${state.year + 1}</h2><p>Du 1er octobre au 30 septembre</p></div><span class="badge">${s.closed ? 'Clôturé' : 'En cours'}</span></div><div class="balance-list"><div><span>Solde de récupération à ce jour</span><strong>${signed(s.balance)}</strong></div><div><span>Congés restants à ce jour</span><strong>${h(s.leaveRemaining)}</strong></div><div><span>Dimanches travaillés à ce jour</span><strong>${h(s.elapsed.sunday)}</strong></div><div><span>Majoration des dimanches à ce jour</span><strong>${h(s.elapsed.bonus)}</strong></div>${s.closed ? `<div><span>Solde de clôture reporté</span><strong>${signed(s.closing)}</strong></div>` : ''}</div><p class="panel-footnote">À la clôture : report du solde de récupération et des congés restants, puis crédit fictif de 175 h de congés pour le nouvel exercice.</p>${state.me.role === 'admin' ? `<div class="panel-actions"><button id="close-year" class="secondary" ${s.closed || !s.opened ? 'disabled' : ''}>Clôturer et reporter les soldes →</button><small>Les 12 mois doivent être validés.</small></div>` : ''}</section></div>`;
+}
+function balanceRows(m) { return `<div class="balance-list"><div><span>Base de référence</span><strong>${h(m.base)}</strong></div><div><span>Heures prévues</span><strong>${h(m.planned)}</strong></div><div><span>Travail réalisé</span><strong>${h(m.worked)}</strong></div><div><span>Majoration dimanche</span><strong>+${h(m.bonus)}</strong></div><div><span>Congés payés / formation</span><strong>${h(m.leave)} / ${h(m.training)}</strong></div><div><span>Récupérations prises</span><strong>${h(m.recovery)}</strong></div><div class="total"><span>Mouvement du mois</span><strong>${signed(m.balance)}</strong></div></div>`; }
+function validation() {
+  return `<div class="inline-note"><span>▣</span><p>La validation simulée verrouille les saisies sur cet appareil uniquement. La signature fictive n’a aucune valeur légale. Une réouverture explicite reste possible avant la clôture annuelle.</p></div><div class="validation-grid">${state.users.map(u => `<section class="panel validation-card"><div class="panel-heading"><div class="person-heading"><span class="avatar">${u.name[0]}</span><div><h2>${esc(u.name)}</h2><p>${esc(u.site)}</p></div></div><span class="badge ${locked(u) ? 'locked' : ''}">${locked(u) ? 'Verrouillé' : 'À valider'}</span></div>${balanceRows(u.summary.month)}<div class="validation-status"><strong>${u.summary.month.missing ? u.summary.month.missing + ' journée(s) manquante(s)' : '✓ Toutes les journées requises sont confirmées'}</strong><p>${locked(u) ? `Validation : ${esc(u.validations.find(v => v.month === month)?.validated_at.slice(0, 10) ?? 'exercice clôturé')} · Signé : ${esc(u.validations.find(v => v.month === month)?.signer ?? '—')}` : 'Relisez les durées et les absences avant validation.'}</p></div><div class="panel-actions"><button data-validation="${u.id}" data-action="${locked(u) ? 'reopen' : 'validate'}" class="${locked(u) ? 'secondary' : 'primary'}" ${u.summary.closed || !u.summary.opened || (!locked(u) && u.summary.month.missing) ? 'disabled' : ''}>${locked(u) ? 'Réouvrir le mois' : 'Signer, valider et verrouiller le mois'}</button></div></section>`).join('')}</div>`;
+}
+function rules() {
+  return `<section class="panel rules"><h2>La convention de cette démonstration</h2><p>Cette démonstration statique utilise uniquement des exemples inventés et une date fixe au 31 octobre 2026. Les règles ci-dessous constituent des hypothèses de fonctionnement à confirmer avant tout usage réel.</p><dl><dt>35 heures par semaine</dt><dd>La référence est répartie à raison de 7 h du lundi au vendredi, soit 35 h sur une semaine complète. Les horaires prévus sont modifiables uniquement par l’administration et sont affichés séparément ; elles ne changent pas la référence de calcul.</dd><dt>Les dimanches comptent double</dt><dd>5 h de travail le dimanche apparaissent comme 5 h réalisées et 5 h de majoration, soit 10 h créditées au compteur de récupération. La majoration est ajoutée une seule fois. Aucun autre taux de majoration n’est appliqué dans cette démonstration.</dd><dt>Le mouvement du compteur de récupération</dt><dd>Travail réalisé + majoration du dimanche + congés payés + formation − base de référence. Une journée de récupération n’est pas créditée comme du travail : elle consomme ainsi 7 h sur un jour de semaine, sans seconde déduction.</dd><dt>Congés, récupérations et formations</dt><dd>Une seule activité par jour dans cette première version. Congés, récupérations et formations couvrent 7 h par journée complète. Un repos vaut 0 h travaillée ; en semaine, il réduit donc le solde de récupération de la base de 7 h. Les demi-journées mixtes, jours fériés et règles légales d’acquisition ne sont pas encore gérés. Les congés sont suivis en heures ; 7 h correspondent à une journée de référence.</dd><dt>Une période du 1er octobre au 30 septembre</dt><dd>La clôture est réservée à l’administrateur après validation des 12 mois. Elle fige les résultats, reporte automatiquement la récupération et les congés restants, puis crédite 175 h fictives de congés pour le nouvel exercice. Les soldes d’ouverture de démonstration sont de 12 h pour le profil A, 7 h pour le profil B et 175 h de congés chacun.</dd><dt>Soldes provisoires et journées manquantes</dt><dd>Les horaires réels sont calculés à partir des arrivées et départs du matin et de l’après-midi. Les journées prévues non confirmées ne créditent aucune heure réelle. Le solde annuel à ce jour utilise la base des jours ouvrés écoulés, même si la saisie manque. Le bilan mensuel utilise le mois entier et le bilan hebdomadaire les semaines entières, limitées aux dates de l’exercice. Des soldes négatifs peuvent donc signaler des saisies futures ou manquantes. La validation exige toutes les journées prévues confirmées, y compris les dimanches travaillés. Les journées futures ne peuvent pas être confirmées.</dd><dt>Un accès personnel et un accès administrateur</dt><dd>Chaque rôle salarié affiche uniquement son profil fictif. L’administration consulte et modifie les deux profils. Les restrictions de rôle et le verrouillage sont simulés dans le navigateur. Il ne s’agit pas d’une protection d’accès : tout visiteur peut choisir tous les rôles. La validation peut être annulée par l’administrateur avant clôture annuelle.</dd></dl></section>`;
+}
+function bind() {
+  bindReset();
+  document.querySelectorAll('[data-page]').forEach(b => b.onclick = () => { page = b.dataset.page; render(); document.querySelector('#main-content').focus(); });
+  document.querySelectorAll('[data-user]').forEach(b => b.onclick = () => { selected = b.dataset.user; render(); });
+  document.querySelectorAll('[data-month]').forEach(b => b.onclick = async () => { const d = new Date(month + '-01T12:00:00Z'); d.setUTCMonth(d.getUTCMonth() + Number(b.dataset.month)); const next = d.toISOString().slice(0, 7); if (next < '2026-10' || next > '2101-09') return; month = next; await reload(); });
+  const monthInput = document.querySelector('#month'); if (monthInput) monthInput.onchange = async e => { if (!e.target.value) return; month = e.target.value; await reload(); };
+  document.querySelectorAll('.logout').forEach(b => b.onclick = async () => { try { await api('logout', {}); login(); } catch (e) { notice(e.message, true); } });
+  document.querySelectorAll('.add-entry').forEach(b => b.onclick = () => edit(month === today().slice(0, 7) ? today() : month + '-01'));
+  document.querySelectorAll('[data-week]').forEach(b => b.onclick = () => { weekIndex = Number(b.dataset.week); render(); });
+  document.querySelectorAll('[data-select-day]').forEach(c => c.onchange = () => { document.querySelector('#confirm-selected').disabled = !document.querySelector('[data-select-day]:checked'); });
+  document.querySelectorAll('[data-confirm-day]').forEach(b => b.onclick = () => confirmDays([b.dataset.confirmDay]));
+  const selectAll = document.querySelector('#select-unchanged');
+  if (selectAll) selectAll.onclick = () => {
+    document.querySelectorAll('[data-select-day]').forEach(c => c.checked = true);
+    document.querySelector('#confirm-selected').disabled = !document.querySelector('[data-select-day]:checked');
+  };
+  const bulk = document.querySelector('#confirm-selected');
+  if (bulk) bulk.onclick = () => confirmDays([...document.querySelectorAll('[data-select-day]:checked')].map(c => c.dataset.selectDay));
+  document.querySelectorAll('[data-date]').forEach(b => b.onclick = () => edit(b.dataset.date));
+  document.querySelectorAll('[data-validation]').forEach(b => b.onclick = async () => {
+    const action = b.dataset.action;
+    if (!confirm(action === 'validate' ? 'Simuler la signature Administration fictive, valider ce mois et verrouiller ses saisies sur cet appareil ?' : 'Réouvrir ce mois et autoriser à nouveau les modifications ?')) return;
+    const signature = action === 'validate' ? 'Administration fictive' : undefined;
+    if (action === 'validate' && !signature) return;
+    b.disabled = true;
+    try { await api(action, { userId: b.dataset.validation, month, signature }); await load(); notice(action === 'validate' ? 'Mois validé et verrouillé.' : 'Mois réouvert.'); } catch (e) { notice(e.message, true); b.disabled = false; }
+  });
+  const close = document.querySelector('#close-year');
+  if (close) close.onclick = async () => { if (!confirm('Clôturer définitivement cet exercice et reporter les soldes vers le suivant ?')) return; try { await api('close-year', { userId: user().id, year: state.year }); await load(); notice('Exercice clôturé. Les soldes ont été reportés.'); } catch (e) { notice(e.message, true); } };
+}
+async function reload() { try { await load(); } catch (e) { notice(e.message, true); } }
+async function confirmDays(ds) {
+  const u = user();
+  document.querySelectorAll('[data-confirm-day],#confirm-selected').forEach(b => b.disabled = true);
+  try {
+    await api('confirm', { userId: u.id, days: ds.map(date => ({ date, revision: u.entries.find(e => e.date === date).revision })) });
+    await load(); notice(`${ds.length} journée(s) confirmée(s). Les compteurs sont à jour.`);
+  } catch (e) { notice(e.message, true); await reload(); }
+}
+function edit(date) {
+  const u = user(), e = u.entries.find(e => e.date === date), admin = state.me.role === 'admin';
+  const slots = (admin ? e?.plannedSlots : e?.actualSlots ?? e?.plannedSlots) ?? emptySlots();
+  const kind = (admin || !e?.confirmed ? e?.plannedKind : e?.kind) ?? 'travail';
+  editor.innerHTML = `<form id="entry-form"><div class="dialog-heading"><div><p class="eyebrow">${esc(u.name)} · ${admin ? 'PRÉVISION ADMINISTRATEUR' : 'SAISIE PAR EXCEPTION'}</p><h2 id="editor-title">${admin ? 'Préparer les horaires' : 'Modifier mes horaires'}</h2></div><button type="button" class="icon-button" id="cancel" aria-label="Fermer">×</button></div><label>Date<input name="date" type="date" required value="${date}" min="${state.year}-10-01" max="${state.year + 1}-09-30"></label><p class="planned-line">Prévision · ${esc(kinds[e?.plannedKind] ?? 'À préparer')}<br><strong>${esc(slotText(e?.plannedSlots))}</strong></p><label>Activité<select name="kind">${Object.entries(kinds).map(([id, label]) => `<option value="${id}" ${kind === id ? 'selected' : ''}>${label}</option>`).join('')}</select></label><div id="slot-fields" class="form-columns">${slotKeys.map((key, i) => `<label>${slotLabels[i]}<input name="${key}" type="time" step="60" value="${esc(slots[key])}"></label>`).join('')}</div><p id="computed-duration" class="computed-duration" aria-live="polite"></p><p class="field-help">${admin ? 'Les prévisions restent distinctes des heures réelles déjà confirmées.' : 'Corrigez uniquement les champs concernés. Les prévisions restent inchangées.'} Pour une période non travaillée, effacez son arrivée et son départ.</p>${admin ? '' : `<label>Note fictive (facultatif)<textarea name="note" rows="2" maxlength="500">${esc(e?.note)}</textarea></label>`}<p id="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="secondary" id="cancel-bottom">Annuler</button><button class="primary" type="submit">${admin ? 'Enregistrer les prévisions' : 'Enregistrer ma journée'}</button></div></form>`;
+  const form = editor.querySelector('form');
+  editor.querySelectorAll('#cancel,#cancel-bottom').forEach(b => b.onclick = () => editor.close());
+  form.elements.date.onchange = () => { const next = form.elements.date.value; if (next) { editor.close(); edit(next); } };
+  const compute = () => {
+    const work = form.elements.kind.value === 'travail';
+    editor.querySelector('#slot-fields').hidden = !work;
+    const values = slotKeys.map(k => form.elements[k].value);
+    let minutes = 0, valid = true;
+    for (const i of [0, 2]) {
+      if (!values[i] && !values[i + 1]) continue;
+      if (!values[i] || !values[i + 1] || values[i + 1] <= values[i]) { valid = false; break; }
+      const n = v => Number(v.slice(0, 2)) * 60 + Number(v.slice(3));
+      minutes += n(values[i + 1]) - n(values[i]);
+    }
+    if (values[1] && values[2] && values[2] < values[1]) valid = false;
+    editor.querySelector('#computed-duration').textContent = work ? valid ? `Total ${admin ? 'prévu' : 'réel'} calculé : ${h(minutes)}${new Date(date).getUTCDay() === 0 && !admin ? ` + ${h(minutes)} de majoration dimanche` : ''}` : 'Complétez des périodes valides, sans chevauchement.' : form.elements.kind.value === 'repos' ? 'Repos · 0 h travaillée' : 'Journée complète · 7 h d’activité · 0 h travaillée';
+  };
+  form.oninput = compute; compute();
+  form.onsubmit = async event => {
+    event.preventDefault(); const button = form.querySelector('[type="submit"]'); button.disabled = true;
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      await api(admin ? 'plan' : 'entry', { userId: u.id, date: data.date, kind: data.kind, slots: Object.fromEntries(slotKeys.map(k => [k, data[k]])), note: data.note, revision: e?.revision });
+      editor.close(); await load(); notice(admin ? 'Prévisions enregistrées.' : 'Journée enregistrée. Les compteurs sont à jour.');
+    } catch (error) { editor.querySelector('#form-error').textContent = error.message; } finally { button.disabled = false; }
+  };
+  editor.showModal();
+}
+try { await load(); } catch { login(); }
+</script>
+</head>
+<body><div id="app"><p class="loading">Chargement des exemples fictifs…</p></div><noscript>Activez JavaScript pour explorer cette démonstration locale.</noscript><div id="toast" role="status" aria-live="polite"></div><dialog id="editor" aria-labelledby="editor-title"></dialog></body>
+</html>
